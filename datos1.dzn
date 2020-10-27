@@ -5,7 +5,7 @@
 
 % Parametros
 % Número de Dias para producción de energia
-n=1;
+n=3;
 
 % Número de clientes
 s=1;  
@@ -14,7 +14,7 @@ s=1;
 CP=[1000, 300, 500];
 
 % Costo de producción de 1 MW para cada central (valor en dolares)
-CC=[0.1, 0.2, 0.3];
+CC=[0.1, 0.1, 0.1];
 
 % Demanda diaria para 1 cliente [MW] hasta n dias
-d=[1700];
+d=[1800, 800, 1000];
