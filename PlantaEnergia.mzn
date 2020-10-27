@@ -22,9 +22,8 @@ constraint forall(i in 1..n) (d[i] <= sum(j in 1..3)(MW[i, j]));
 % Restricción no negatividad
 constraint forall(i in 1..n, j in 1..3)(MW[i,j] >= 0);
 
-
 %FUNCIÓN OBJETIVO
-% Minimizar el costo de producción de energia (caso para 1 cliente)
+% Minimizar el costo de produccion de energia (caso para 1 cliente)
 var float: costo;
 constraint costo = sum(i in 1..n, j in 1..3) (MW[i, j] * CC[j]);
 solve minimize costo;

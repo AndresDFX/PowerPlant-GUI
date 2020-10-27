@@ -5,7 +5,7 @@
 
 % Parametros
 % Número de Dias para producción de energia
-n=3;
+n=4;
 
 % Número de clientes
 s=1;  
@@ -17,4 +17,5 @@ CP=[1000, 300, 500];
 CC=[0.1, 0.1, 0.1];
 
 % Demanda diaria para 1 cliente [MW] hasta n dias
-d=[1800, 800, 1000];
+d=[1800, 800, 1000, 900];
+
