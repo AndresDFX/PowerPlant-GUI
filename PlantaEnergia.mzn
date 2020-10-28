@@ -7,23 +7,30 @@ int: s;
 array[1..3] of float: CP; 
 % Costo por producir 1 MW en cada central (CN,CH,CT)
 array[1..3] of float: CC; 
-%array[1..s, 1..n] of int: d; % matriz de demanda diaria en MW de la lista de clientes
-array[1..n] of float: d;
+% Demanda diaria en MW de cada cliente
+% Filas -> Clientes
+% Columnas -> Dias
+array[1..s, 1..n] of float: d; 
+
 
 % VARIABLES
-% Indica la cantidad de MW a producir en cada central (caso para 1 cliente)
-array[1..n, 1..3] of var float: MW;
+% Indica la cantidad de MW a producir en cada central
+% Filas -> Centrales electricas
+% Columnas -> Dias
+array[1..3, 1..n] of var float: MW;
 
 % RESTRICCIONES
 % Restricción de capacidad de producción
-constraint forall(i in 1..n, j in 1..3) (MW[i,j] <= CP[j]);
-% Restricción demanda diaria para 1 cliente
-constraint forall(i in 1..n) (d[i] <= sum(j in 1..3)(MW[i, j]));
+constraint forall(i in 1..3, j in 1..n) (MW[i,j] <= CP[i]);
+% Restricción demanda diaria para cada cliente
+constraint forall(j in 1..n) (sum(i in 1..s)(d[i, j]) <= sum(i in 1..3)(MW[i, j]));
 % Restricción no negatividad
-constraint forall(i in 1..n, j in 1..3)(MW[i,j] >= 0);
+constraint forall(i in 1..3, j in 1..n)(MW[i,j] >= 0);
 
-%FUNCIÓN OBJETIVO
-% Minimizar el costo de produccion de energia (caso para 1 cliente)
+% FUNCIÓN OBJETIVO
+% Minimizar el costo de produccion de energia
 var float: costo;
-constraint costo = sum(i in 1..n, j in 1..3) (MW[i, j] * CC[j]);
+constraint costo = sum(i in 1..3, j in 1..n) (MW[i, j] * CC[i]);
 solve minimize costo;
+
+% Ejecutar con COIN_BC
