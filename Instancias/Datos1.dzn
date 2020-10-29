@@ -1,0 +1,20 @@
+% Parametros
+% Número de Dias para producción de energia
+n=3;
+
+% Número de clientes
+s=3;  
+
+% Capacidad de producción diaria en MW
+CP=[1000, 1500, 1200];
+
+% Costo de producción de 1 MW para cada central (valor en dolares)
+CC=[2.0, 2.5, 1.5];
+
+% Demanda diaria para s cliente [MW] hasta n dias
+% Filas -> Clientes
+% Columnas -> Dias
+d=[| 300, 3000, 450
+   | 800, 150, 300
+   | 800, 1500, 300|];
+
