@@ -19,6 +19,7 @@ array[1..s, 1..n] of float: d;
 % Columnas -> Dias
 array[1..3, 1..n] of var float: MW;
 
+
 % RESTRICCIONES
 % Restricción de capacidad de producción
 constraint forall(i in 1..3, j in 1..n) (MW[i,j] <= CP[i]);
@@ -27,6 +28,7 @@ constraint forall(j in 1..n) (sum(i in 1..s)(d[i, j]) <= sum(i in 1..3)(MW[i, j]
 % Restricción no negatividad
 constraint forall(i in 1..3, j in 1..n)(MW[i,j] >= 0);
 
+
 % FUNCIÓN OBJETIVO
 % Minimizar el costo de produccion de energia
 var float: costo;
@@ -34,3 +36,8 @@ constraint costo = sum(i in 1..3, j in 1..n) (MW[i, j] * CC[i]);
 solve minimize costo;
 
 % Ejecutar con COIN_BC
+
+% costo = 5200
+% [1000.0, 950.0, 1000.0, 1000.0
+% , 300.0, -0.0, 300.0, 150.0, 
+%  500.0, -0.0, -0.0, -0.0])

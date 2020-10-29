@@ -13,8 +13,8 @@ s=2;
 % Capacidad de producción diaria en MW
 CP=[1000, 300, 500];
 
-% Costo de producción de 1 MW para cada central (valor en dolares)
-CC=[0.1, 0.1, 0.1];
+% Costo de producción de 1 MW para cada central
+CC=[1, 1, 1];
 
 % Demanda diaria para s cliente [MW] hasta n dias
 % Filas -> Clientes

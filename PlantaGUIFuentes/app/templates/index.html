@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Power Plant MiniZinc</title>
+    <link rel="icon" href="{{ url_for('static', filename = 'image/favicon.ico') }}">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename = 'css/uikit.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename = 'css/style.css') }}"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/handsontable@8.1.0/dist/handsontable.full.min.css"
+      rel="stylesheet"
+      media="screen"
+    />
+  </head>
+  <body>
+    <div class="uk-container">
+      <div class="uk-flex uk-flex-bottom uk-padding uk-padding-remove-bottom">
+        <h1 class="uk-margin-remove-bottom">Power Plant MiniZinc</h1>
+        <img
+          data-src="{{ url_for('static', filename = 'image/logo.png') }}"
+          width="70"
+          height="70"
+          alt=""
+          uk-img
+        />
+      </div>
+      <br />
+      <div class="uk-padding uk-padding-remove-bottom uk-padding-remove-top">
+        <legend class="uk-legend">Parametros</legend>
+
+        <br />
+
+        <div uk-grid>
+          <div class="uk-width-1-4@s">
+            <label class="uk-form-label" for="form-stacked-text">
+              Capacidad de Producción MW
+            </label>
+            <input
+              id="cp"
+              class="uk-input"
+              type="text"
+              placeholder="CN CH CT"
+            />
+          </div>
+
+          <div class="uk-width-1-4@s">
+            <label class="uk-form-label" for="form-stacked-text">
+              Costo de Producción $
+            </label>
+            <input
+              id="cc"
+              class="uk-input"
+              type="text"
+              placeholder="CN CH CT"
+            />
+          </div>
+
+          <div class="uk-width-1-4@s">
+            <label class="uk-form-label" for="form-stacked-text">
+              Número de Dias
+            </label>
+            <input id="nd" class="uk-input" type="number" placeholder="Ej: 7" />
+          </div>
+
+          <div class="uk-width-1-4@s">
+            <label class="uk-form-label" for="form-stacked-text">
+              Número de Clientes
+            </label>
+            <input id="nc" class="uk-input" type="number" placeholder="Ej: 2" />
+          </div>
+        </div>
+
+        <br />
+
+        <div>
+          <label class="uk-form-label" for="form-stacked-text">
+            Demanda de Energia (Filas: Clientes / Columnas: Dias)
+          </label>
+          <div id="demanda_cliente" class="uk-margin-small-top"></div>
+        </div>
+
+        <br />
+
+        <button class="uk-button uk-button-primary uk-width-1-1" id="send">
+          Solucionar Modelo
+        </button>
+        <br />
+        <hr class="uk-divider-icon" />
+      </div>
+
+      <div
+        class="uk-padding uk-padding-remove-bottom uk-padding-remove-top container_results"
+      >
+        <legend class="uk-legend">Resultados</legend>
+        <label class="uk-form-label">
+          Costo Minimo de producción $: <strong id="costo"></strong>
+        </label>
+
+        <br />
+
+        <label class="uk-form-label">
+          MW producidos por cada Central Eléctrica
+        </label>
+      </div>
+      <div class="uk-padding uk-padding-remove-top">
+        <div id="resultados" class="uk-margin-small-top"></div>
+        <button
+          class="uk-button uk-button-primary container_results"
+          id="file_dzn"
+        >
+          Descargar Datos.dzn
+        </button>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="{{ url_for('static', filename = 'js/uikit.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handsontable@8.1.0/dist/handsontable.full.min.js"></script>
+    <script src="{{ url_for('static', filename = 'js/index.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
+  </body>
+</html>
